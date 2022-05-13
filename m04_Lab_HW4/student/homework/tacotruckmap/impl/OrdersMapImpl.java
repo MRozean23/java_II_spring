@@ -22,6 +22,10 @@ public class OrdersMapImpl implements Orders
     @Override
     public void addTacoToOrder(final String orderid, final TacoImpl taco) throws OrderDoesNotExistException 
     {
+    	if(!tacoMap.containsKey(orderid))
+    	{
+    		throw new OrderDoesNotExistException("Does not Exist");
+    	}
     	this.tacoMap.get(orderid).add(taco);
     }
 
@@ -34,6 +38,10 @@ public class OrdersMapImpl implements Orders
     @Override
     public List<TacoImpl> closeOrder(final String orderid) throws OrderDoesNotExistException 
     {
+    	if(!tacoMap.containsKey(orderid))
+    	{
+    		throw new OrderDoesNotExistException("Does not Exist");
+    	}
     	return this.tacoMap.remove(orderid);
     }
 
@@ -46,6 +54,10 @@ public class OrdersMapImpl implements Orders
     @Override
     public List<TacoImpl> getListOfOrders(final String orderid) throws OrderDoesNotExistException 
     {
+    	if(!tacoMap.containsKey(orderid))
+    	{
+    		throw new OrderDoesNotExistException("Does not Exist");
+    	}
     	return this.tacoMap.get(orderid);
     }
 }
